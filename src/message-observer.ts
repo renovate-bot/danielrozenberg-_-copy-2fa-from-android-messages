@@ -6,22 +6,29 @@ declare const browser: Browser;
 
 function initMessageObserver() {
   console.log('Initializing MutationObserver to process incoming messages');
-  let lastFoundCode = '';
+  // Stays undefined until the conversation list first renders, so a code
+  // already on screen when the page loads is not copied.
+  let lastFoundCode: string | undefined;
 
   const observer = new MutationObserver(async () => {
-    const topMessageElement = document.querySelector(
-      'mws-conversations-list mws-conversation-list-item:first-of-type .text-content.unread',
+    const topConversation = document.querySelector(
+      'mws-conversations-list mws-conversation-list-item:first-of-type',
     );
-    const sender = topMessageElement?.querySelector('.name')?.textContent;
-    const fullMessage =
-      topMessageElement?.querySelector('.snippet-text')?.textContent;
-    const code = extractCode(fullMessage ?? '');
-    if (!sender || !fullMessage || !code) {
+    if (!topConversation) {
       return;
     }
+    const unreadMessage = topConversation.querySelector('.text-content.unread');
+    const sender = unreadMessage?.querySelector('.name')?.textContent;
+    const fullMessage =
+      unreadMessage?.querySelector('.snippet-text')?.textContent;
+    const code = extractCode(fullMessage ?? '');
 
+    if (lastFoundCode === undefined) {
+      lastFoundCode = code ?? '';
+      return;
+    }
     // Prevent repeats because `document` changes a lot.
-    if (code === lastFoundCode) {
+    if (!sender || !fullMessage || !code || code === lastFoundCode) {
       return;
     }
     lastFoundCode = code;
