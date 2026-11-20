@@ -4,6 +4,7 @@
     "target": "ESNext",
     "strict": true,
     "noEmit": true,
+    "skipLibCheck": true,
     "allowImportingTsExtensions": true
   }
 }

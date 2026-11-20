@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { extractCode } from './extract-code.ts';
+import { extractCode } from '../src/common/extract-code.ts';
 
 void test('extracts the code after a colon', () => {
   assert.equal(extractCode('Your code: 1234'), '1234');

@@ -13,7 +13,7 @@
     "build:esbuild": "esbuild src/*.ts --bundle --format=esm --sourcemap --outdir=dist/ --out-extension:.js=.mjs",
     "clean": "rm -rf dist/ && mkdir dist/",
     "lint": "eslint .",
-    "test": "node --test 'src/**/*.test.ts'",
+    "test": "node --test 'tests/**/*.test.ts'",
     "typecheck": "tsc"
   },
   "author": "Daniel Rozenberg",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@eslint/js": "9.39.1",
     "@eslint/json": "0.14.0",
+    "@happy-dom/global-registrator": "21.0.4",
     "@ianvs/prettier-plugin-sort-imports": "4.7.0",
     "@types/node": "24.19.2",
     "@types/webextension-polyfill": "0.12.4",

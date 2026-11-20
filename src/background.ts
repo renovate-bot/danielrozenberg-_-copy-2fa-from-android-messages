@@ -1,4 +1,4 @@
-import { ANDROID_MESSAGES_HOST_PERMISSION } from './common/host-permission';
+import { ANDROID_MESSAGES_HOST_PERMISSION } from './common/host-permission.ts';
 
 import type { Browser } from 'webextension-polyfill';
 

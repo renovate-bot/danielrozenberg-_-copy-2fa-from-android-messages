@@ -1,4 +1,4 @@
-import { extractCode } from './common/extract-code';
+import { extractCode } from './common/extract-code.ts';
 
 import type { Browser } from 'webextension-polyfill';
 
