@@ -13,7 +13,7 @@ function initMessageObserver() {
     const sender = topMessageElement?.querySelector('.name')?.textContent;
     const fullMessage =
       topMessageElement?.querySelector('.snippet-text')?.textContent;
-    const code = fullMessage?.match(/:\s+.*(\b\d{4,8}\b)/)?.[1];
+    const code = fullMessage?.match(/:\s+.*?(\b\d{4,8}\b)/)?.[1];
     if (!sender || !fullMessage || !code) {
       return;
     }
