@@ -12,7 +12,8 @@
     "build:static": "cp -r static/* dist/",
     "build:esbuild": "esbuild src/*.ts --bundle --format=esm --sourcemap --outdir=dist/ --out-extension:.js=.mjs",
     "clean": "rm -rf dist/ && mkdir dist/",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc"
   },
   "author": "Daniel Rozenberg",
   "license": "ISC",

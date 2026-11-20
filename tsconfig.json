@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "Preserve",
     "target": "ESNext",
-    "strict": true
+    "strict": true,
+    "noEmit": true
   }
 }
