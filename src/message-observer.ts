@@ -10,7 +10,7 @@ function initMessageObserver() {
   // already on screen when the page loads is not copied.
   let lastFoundCode: string | undefined;
 
-  const observer = new MutationObserver(async () => {
+  const checkTopConversation = async () => {
     const topConversation = document.querySelector(
       'mws-conversations-list mws-conversation-list-item:first-of-type',
     );
@@ -40,9 +40,13 @@ function initMessageObserver() {
     };
     console.log('Found possible 2FA code. Payload:', payload);
     await browser.runtime.sendMessage(payload);
-  });
+  };
 
-  observer.observe(document, { childList: true, subtree: true });
+  new MutationObserver(checkTopConversation).observe(document, {
+    childList: true,
+    subtree: true,
+  });
+  void checkTopConversation();
 }
 
 console.log('Copy 2FA from Android Messages starting');
