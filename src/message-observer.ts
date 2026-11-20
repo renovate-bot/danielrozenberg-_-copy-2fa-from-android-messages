@@ -1,3 +1,5 @@
+import { extractCode } from './common/extract-code';
+
 import type { Browser } from 'webextension-polyfill';
 
 declare const browser: Browser;
@@ -13,7 +15,7 @@ function initMessageObserver() {
     const sender = topMessageElement?.querySelector('.name')?.textContent;
     const fullMessage =
       topMessageElement?.querySelector('.snippet-text')?.textContent;
-    const code = fullMessage?.match(/:\s+.*?(\b\d{4,8}\b)/)?.[1];
+    const code = extractCode(fullMessage ?? '');
     if (!sender || !fullMessage || !code) {
       return;
     }

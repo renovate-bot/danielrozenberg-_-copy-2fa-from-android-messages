@@ -3,6 +3,7 @@
     "module": "Preserve",
     "target": "ESNext",
     "strict": true,
-    "noEmit": true
+    "noEmit": true,
+    "allowImportingTsExtensions": true
   }
 }
